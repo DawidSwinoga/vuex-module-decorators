@@ -10,7 +10,7 @@ import {
 } from './staticGenerators'
 
 function moduleDecoratorFactory<S>(moduleOptions: ModuleOptions) {
-  return function<TFunction extends Function>(constructor: TFunction): TFunction | void {
+  return function <TFunction extends Function>(constructor: TFunction): TFunction | void {
     const module: Function & Mod<S, any> = constructor
     const stateFactory = () => sf(module)
 
@@ -82,7 +82,8 @@ function moduleDecoratorFactory<S>(moduleOptions: ModuleOptions) {
       }
       modOpt.store.registerModule(
         modOpt.name, // TODO: Handle nested modules too in future
-        module
+        module,
+        { preserveState: modOpt.preserveState || false }
       )
     }
     return constructor

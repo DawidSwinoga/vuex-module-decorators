@@ -1,4 +1,5 @@
 import { Store } from 'vuex'
+
 /**
  * Options to pass to the @Module decorator
  */
@@ -41,6 +42,8 @@ export interface DynamicModuleOptions {
    * Whether to generate a plain state object, or a state factory for the module
    */
   stateFactory?: boolean
+
+  preserveState?: boolean
 }
 
 export type ModuleOptions = StaticModuleOptions | DynamicModuleOptions
